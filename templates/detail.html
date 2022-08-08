@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<div class="card mb-3" style="max-width: 840px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ object.image_url }}" class="card-img">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">Nombre: {{ object.nombre }}</h4>
+          <p class="card-text">Artista: {{ object.artista }}</p><hr>
+          <p class="card-text">Descripcion: {{ object.descripcion }}</p>
+          <p class="card-text">Fecha Del Evento: {{ object.fecha }}</p>
+          <p class="card-text">Lugar: {{ object.lugar }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<p><a href="{{ object.ver_instragram }}">Instagram De Artista</a> </p>
+<p>Precio: ${{ object.precio|floatformat:2 }}</p>
+
+
+{% if object.evento_valido is True %}
+<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Compra Ahora!</a>
+{% else %}
+<h4 class="text-danger">Fuera De Stock!</h4>
+{% endif %}
+
+<p> </p>
+
+ <!-- Footer-->
+ <footer class="py-4 bg-dark">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6 footer-contact text-white">
+          <h4>Correos</h4>
+          <p>
+            <strong>Correo:</strong> diego.lojan@unl.edu.ec<br />
+            <strong>Correo:</strong> maria.d.salazar@unl.edu.ec<br />
+          </p>
+        </div>
+
+        <div class="col-lg-6 col-md-6 footer-contact text-white">
+          <h4>Contactos</h4>
+          <p>
+            <strong>Telefono:</strong> +593 93 932 7368<br />
+            <strong>Telefono:</strong> +593 98 566 9159<br />
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+{% endblock content %}

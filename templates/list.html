@@ -1,0 +1,104 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<hr>
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div id="indicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#indicators" data-slide-to="0" class="active"></li>
+        <li data-target="#indicators" data-slide-to="1"></li>
+        <li data-target="#indicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/M4HITTX5MNHIVBCGL6FRCUO6XQ.jpg') ">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4">Teatro Benjamin Carrion</h3>
+            <p class="lead">Av. Salvador Bustamante Celi y Agustín Carrión, rodeado por el Recinto Ferial, Parque Jipiro y SOLCA</p>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('https://pbs.twimg.com/media/EegoQLKWkAAOrfX.jpg:large')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4">Coliseo De Loja</h3>
+            <p class="lead">Es  un  Barrio tranquilo con un alto  flujo  vehicular   y  con   facilidad  de  llegar   al  complejo  ciudad  de  Loja</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('https://scontent.floh3-1.fna.fbcdn.net/v/t39.30808-6/240879507_1014049986045081_6288225227490455625_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeELuZelFHAVukGwd3_dOPWjBRLsv9J5pAoFEuy_0nmkCiRaywi4uVQ7zp6W69mH8rhFhtyAH1gAmDtaSqNzvkEZ&_nc_ohc=xTDZ0k8_rDcAX-HcPAY&_nc_ht=scontent.floh3-1.fna&oh=00_AT9ErHh3p94zhWr_KU8scg256Fze_P4OCM1QX4oezBDmgQ&oe=62EB94E8')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4">Estadio Reina Del Cisne</h3>
+            <p class="lead">El estadio Federativo Reina del Cisne, es un estadio multiusos. Está ubicado en la avenida Emiliano Ortega y calle Azuay</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#indicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+      <a class="carousel-control-next" href="#indicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+    </div>
+  </header>        
+
+
+<p> </p>
+
+<div class="row">
+    {% for each in object_list %}
+    <div class="col">
+        <div class="card" style="width: 13rem;">
+            <img src="{{ each.image_url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ each.nombre|slice:":25"}}</h5>
+                <p class="card-text">${{ each.precio|floatformat:2 }}</p>                
+                {% if each.evento_valido is True %}
+                <li class="text-primary">Disponible</li>
+                {% else %}
+                <li class="text-danger">Fuera De Stock!</li>
+                {% endif %}<br>
+                <a href="{% url 'detail' each.id %}" class="btn btn-primary">Ver Detalles</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<p> </p>
+
+
+ <!-- Footer-->
+ <footer class="py-4 bg-dark">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6 footer-contact text-white">
+          <h4>Correos</h4>
+          <p>
+            <strong>Correo:</strong> diego.lojan@unl.edu.ec<br />
+            <strong>Correo:</strong> maria.d.salazar@unl.edu.ec<br />
+          </p>
+        </div>
+
+        <div class="col-lg-6 col-md-6 footer-contact text-white">
+          <h4>Contactos</h4>
+          <p>
+            <strong>Telefono:</strong> +593 93 932 7368<br />
+            <strong>Telefono:</strong> +593 98 566 9159<br />
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+
+
+{% endblock content %}
+
