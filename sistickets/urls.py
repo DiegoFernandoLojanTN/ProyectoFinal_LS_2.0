@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('eventos.urls')),
     path('', include("accounts.urls")), 
     path('accounts/', include("django.contrib.auth.urls")),   # working for login.html
+    path('api/', include('api.urls'))
 ]
 
 if settings.DEBUG:

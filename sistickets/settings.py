@@ -25,7 +25,14 @@ SECRET_KEY = 'p@#aq4ig^2w-%b=a$l6ml2g2s^)32dl34)4dan=ei$)2k%ug14'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+##    '192.168.100.230',
+ #   '10.20.204.71',
+#    '192.168.224.60'
+#   '192.168.198.1',
+    '192.168.100.73',
+]
 
 
 # Application definition
@@ -40,9 +47,9 @@ INSTALLED_APPS = [
      # my apps,
     'eventos.apps.EventosConfig',
     'accounts.apps.AccountsConfig',
-    
+    'api.apps.ApiConfig',
+    'rest_framework'  
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-u'
 
 TIME_ZONE = 'UTC'
 
